@@ -3,8 +3,7 @@ class Restaurant
   MAXPRICE = 5
   MINPRICE = 0
 
-  attr_accessor :ratings
-  attr_accessor :price
+  attr_accessor :ratings, :price, :location
 
   def initialize
     @ratings = []
@@ -18,6 +17,14 @@ class Restaurant
 
   def add_rating(new_rating)
     ratings << new_rating
+  end
+
+  def set_location(location)
+    @location = location
+  end
+
+  def get_location
+    @location
   end
 
   def set_price(price)

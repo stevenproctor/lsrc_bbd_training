@@ -57,4 +57,10 @@ describe Restaurant do
         restaurant.price.should == 5
       end
     end
+
+    describe "a restaurant has a location associated with it" do
+      restaurant = Restaurant.new
+      restaurant.set_location("76034")
+      restaurant.get_location.should == "76034"
+    end
 end
