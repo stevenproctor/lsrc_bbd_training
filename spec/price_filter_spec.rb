@@ -10,17 +10,39 @@ describe PriceFilter do
       filter = PriceFilter.new
       filter.max_price.should == 5
     end
-    it "should have a max price of 3" do
+  end
+
+  describe "it should be able to have the range set" do
+    it "should be able to have the max price set" do
       filter = PriceFilter.new
       filter.set_max_price(3)
       filter.max_price.should == 3
     end
 
+    it "should be able to have the min price set" do
+      filter = PriceFilter.new
+      filter.set_min_price(3)
+      filter.min_price.should == 3
+    end
   end
 
   describe "it should match if in the price range" do
     it "should match if the price is in the range" do
       filter = PriceFilter.new
+      price = PriceStub.new(3)
+
+      filter.matches?(price).should == true
+    end
+    it "should match if the price is at the upper edge of the range" do
+      filter = PriceFilter.new
+      filter.set_max_price(3)
+      price = PriceStub.new(3)
+
+      filter.matches?(price).should == true
+    end
+    it "should match if the price is at the lower edge of the range" do
+      filter = PriceFilter.new
+      filter.set_min_price(3)
       price = PriceStub.new(3)
 
       filter.matches?(price).should == true
