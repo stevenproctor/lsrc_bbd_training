@@ -52,8 +52,8 @@ describe PriceFilter do
   it "it should not match if out of range" do
     filter = PriceFilter.new
     filter.set_max_price(2)
+    price = PriceStub.new(3)
 
-    price = PriceStub.new(4)
     filter.matches?(price).should == false
   end
 end
