@@ -13,7 +13,7 @@ describe LocationFilter do
     filter.matches?(place).should == true
   end
 
-  it "It should match when the distance from the location service is less than max distance" do
+  it "It should not match when the distance from the location service is greater than max distance" do
     locationService = double("location service stub", :get_distance => 1000)
     origin = double("location", :get_location => "90210")
     place = double("place", :get_location => "20001")
