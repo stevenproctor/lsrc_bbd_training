@@ -1,5 +1,8 @@
 class Restaurant
 
+  MAXPRICE = 5
+  MINPRICE = 0
+
   attr_accessor :ratings
   attr_accessor :price
 
@@ -18,6 +21,7 @@ class Restaurant
   end
 
   def set_price(price)
+    return if price < MINPRICE || price > MAXPRICE
     @price = price
   end
 

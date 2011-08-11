@@ -26,9 +26,35 @@ describe Restaurant do
       restaurant.score.should == 4
     end
 
-    it "a restaurant can have a price on it" do
-      restaurant = Restaurant.new
-      restaurant.set_price(2)
-      restaurant.price.should == 2
+    describe "a restaurant has a price associated with it" do
+      it "a restaurant can have a price on it" do
+        restaurant = Restaurant.new
+        restaurant.set_price(2)
+        restaurant.price.should == 2
+      end
+
+      it "a restaurant's price cannot be below 0" do
+        restaurant = Restaurant.new
+        restaurant.set_price(-1)
+        restaurant.price.should == 0
+      end
+
+      it "a restaurant's price cannot be below 0" do
+        restaurant = Restaurant.new
+        restaurant.set_price(0)
+        restaurant.price.should == 0
+      end
+
+      it "a restaurant's price cannot be above 5" do
+        restaurant = Restaurant.new
+        restaurant.set_price(6)
+        restaurant.price.should == 0
+      end
+
+      it "a restaurant's price can be a 5" do
+        restaurant = Restaurant.new
+        restaurant.set_price(5)
+        restaurant.price.should == 5
+      end
     end
 end
